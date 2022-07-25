@@ -1,19 +1,41 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Header from "./components/Header";
 import "./App.css";
 import Search from "./components/Search";
 import PlaceholderTxt from "./components/PlaceholderTxt";
+import axios from "axios";
 
 const App = () => {
+  const [inputs, setInputs] = useState(false);
+  const [searchTerm, setSearchTerm] = useState();
+
+  function onInput(receivedTxt) {
+    setSearchTerm(receivedTxt);
+  }
+  async function fetchData(receivedTxt) {
+    const response = await axios.get("http://www.omdbapi.com/", {
+      params: {
+        apikey: "a9944bf1",
+        s: receivedTxt,
+      },
+    });
+    console.log(response.data.Search);
+  }
+
+  useEffect(() => {
+    fetchData(searchTerm);
+  }, [searchTerm]);
+
+  console.log(searchTerm);
   return (
     <Fragment>
       <Header />
       <div className="container">
         <main>
-          <Search />
-          <Search />
+          <Search onInput={onInput} />
+          <Search onInput={onInput} />
         </main>
-        <PlaceholderTxt />
+        <PlaceholderTxt inputs={inputs} />
       </div>
     </Fragment>
   );

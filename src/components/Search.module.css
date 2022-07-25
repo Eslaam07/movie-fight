@@ -1,0 +1,32 @@
+main {
+  display: flex;
+  gap: 30px;
+  padding: 10px;
+}
+
+.searchBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+input {
+  outline: none;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  height: 35px;
+  font-size: 18px;
+}
+
+input:focus {
+  border: 1px solid #00d1b2;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  main {
+    flex-direction: column;
+  }
+}

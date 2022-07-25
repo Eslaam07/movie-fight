@@ -8,10 +8,16 @@ import axios from "axios";
 const App = () => {
   const [inputs, setInputs] = useState(false);
   const [searchTerm, setSearchTerm] = useState();
+  const [timeoutId, setTimeoutId] = useState();
 
   function onInput(receivedTxt) {
-    setSearchTerm(receivedTxt);
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    setTimeoutId(setTimeout(() => setSearchTerm(receivedTxt), 1000));
+    // setSearchTerm(receivedTxt);
   }
+
   async function fetchData(receivedTxt) {
     const response = await axios.get("http://www.omdbapi.com/", {
       params: {
@@ -23,10 +29,13 @@ const App = () => {
   }
 
   useEffect(() => {
-    fetchData(searchTerm);
+    if (searchTerm) {
+      fetchData(searchTerm);
+    }
   }, [searchTerm]);
 
   console.log(searchTerm);
+
   return (
     <Fragment>
       <Header />

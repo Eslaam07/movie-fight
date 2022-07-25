@@ -18,6 +18,8 @@ const App = () => {
     // setSearchTerm(receivedTxt);
   }
 
+  const [movies, setMovies] = useState([]);
+
   async function fetchData(receivedTxt) {
     const response = await axios.get("http://www.omdbapi.com/", {
       params: {
@@ -25,24 +27,43 @@ const App = () => {
         s: receivedTxt,
       },
     });
-    console.log(response.data.Search);
+    if (response.data.Error) {
+      console.log(response.data.Error);
+      setMovies([]);
+    } else {
+      setInputs(true);
+      setSearchResults(true);
+      console.log(response.data.Search);
+      setMovies(response.data.Search);
+    }
   }
 
   useEffect(() => {
-    if (searchTerm) {
-      fetchData(searchTerm);
-    }
+    fetchData(searchTerm.trim());
   }, [searchTerm]);
 
-  console.log(searchTerm);
+  const [searchResults, setSearchResults] = useState(false);
+  document.addEventListener("click", () => setSearchResults(false));
+
+  // console.log(searchTerm);
+  console.log(movies);
+  console.log(searchResults);
 
   return (
     <Fragment>
       <Header />
       <div className="container">
         <main>
-          <Search onInput={onInput} />
-          <Search onInput={onInput} />
+          <Search
+            onInput={onInput}
+            movies={movies}
+            searchResults={searchResults}
+          />
+          <Search
+            onInput={onInput}
+            movies={movies}
+            searchResults={searchResults}
+          />
         </main>
         <PlaceholderTxt inputs={inputs} />
       </div>

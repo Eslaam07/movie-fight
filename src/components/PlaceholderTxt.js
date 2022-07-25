@@ -3,6 +3,7 @@ import classes from "./PlaceholderTxt.module.css";
 
 const Placeholdertxt = (props) => {
   const { inputs } = props;
+
   return (
     !inputs && (
       <div className={classes.temp}>

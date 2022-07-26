@@ -9,7 +9,9 @@ const MovieInfo = (props) => {
       <div className={classes.summary}>
         <img src={movieDetails.Poster} alt=""></img>
         <div className={classes.infotexts}>
-          <h2>{movieDetails.Title}</h2>
+          <h2>
+            {movieDetails.Title} ({movieDetails.Year})
+          </h2>
           <h4>{movieDetails.Genre}</h4>
           <p>{movieDetails.Plot}</p>
         </div>
@@ -28,11 +30,11 @@ const MovieInfo = (props) => {
       </div>
       <div className={classes.otherInfo}>
         <h1>{movieDetails.imdbRating}</h1>
-        <p>imdbRating</p>
+        <p>IMDB Rating</p>
       </div>
       <div className={classes.otherInfo}>
         <h1>{movieDetails.imdbVotes}</h1>
-        <p>imdbVotes</p>
+        <p>IMDB Votes</p>
       </div>
     </div>
   );

@@ -23,17 +23,15 @@ const Search = (props) => {
         i: movie.imdbID,
       },
     });
-    console.log(response.data);
     setMovieDetails(response.data);
     setShowDetails(true);
   }
 
-  console.log(movies);
   let list = movies.map((movie) => (
     <li
       key={movie.imdbID}
       onClick={() => {
-        setEnteredMovie(`${movie.Title} (${movie.Year})`);
+        setEnteredMovie("");
         onClick(false);
         onMovieSelect(movie);
         setMovieDetails(true);

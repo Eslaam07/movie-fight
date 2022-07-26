@@ -9,7 +9,8 @@
   display: flex;
   gap: 10px;
   margin-bottom: 5px;
-  height: 260px;
+  height: 275px;
+  overflow-y: auto;
 }
 
 .infotexts {

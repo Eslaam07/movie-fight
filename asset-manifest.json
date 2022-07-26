@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/movie-fight/static/css/main.cedc578c.css",
+    "main.js": "/movie-fight/static/js/main.8f4d5ed9.js",
+    "index.html": "/movie-fight/index.html",
+    "main.cedc578c.css.map": "/movie-fight/static/css/main.cedc578c.css.map",
+    "main.8f4d5ed9.js.map": "/movie-fight/static/js/main.8f4d5ed9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cedc578c.css",
+    "static/js/main.8f4d5ed9.js"
+  ]
+}

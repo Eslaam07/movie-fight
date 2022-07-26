@@ -1,4 +1,4 @@
-h2 {
+header h2 {
   height: 10vh;
   display: flex;
   justify-content: flex-start;
@@ -6,4 +6,12 @@ h2 {
   padding-left: 30px;
   color: white;
   background-image: linear-gradient(141deg, #009e6c 0%, #00d1b2 71%, #00e7eb 100%);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  header h2 {
+    justify-content: center;
+    padding-left: 0;
+  }
 }

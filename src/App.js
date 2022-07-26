@@ -14,7 +14,7 @@ const App = () => {
     if (timeoutId) {
       clearTimeout(timeoutId);
     }
-    setTimeoutId(setTimeout(() => setSearchTerm(receivedTxt), 1000));
+    setTimeoutId(setTimeout(() => setSearchTerm(receivedTxt.trim()), 500));
     // setSearchTerm(receivedTxt);
   }
 
@@ -28,8 +28,8 @@ const App = () => {
       },
     });
     if (response.data.Error) {
-      console.log(response.data.Error);
       setMovies([]);
+      console.log(response.data.Error);
     } else {
       setInputs(true);
       setSearchResults(true);
@@ -39,11 +39,17 @@ const App = () => {
   }
 
   useEffect(() => {
-    fetchData(searchTerm.trim());
+    if (searchTerm) {
+      fetchData(searchTerm);
+    }
   }, [searchTerm]);
 
   const [searchResults, setSearchResults] = useState(false);
   document.addEventListener("click", () => setSearchResults(false));
+
+  function clickHandler(recBoolean) {
+    setSearchResults(recBoolean);
+  }
 
   // console.log(searchTerm);
   console.log(movies);
@@ -58,11 +64,13 @@ const App = () => {
             onInput={onInput}
             movies={movies}
             searchResults={searchResults}
+            onClick={clickHandler}
           />
           <Search
             onInput={onInput}
             movies={movies}
             searchResults={searchResults}
+            onClick={clickHandler}
           />
         </main>
         <PlaceholderTxt inputs={inputs} />

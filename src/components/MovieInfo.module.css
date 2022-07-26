@@ -1,0 +1,43 @@
+.details img {
+  width: 150px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.summary {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+  height: 260px;
+}
+
+.infotexts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #363636;
+}
+
+.otherInfo {
+  background-color: #00d1b2;
+  color: white;
+  margin-bottom: 15px;
+  padding: 10px;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 500px) {
+  .summary p {
+    display: none;
+  }
+  .details {
+    font-size: 14px ;
+  }
+}
